@@ -25,11 +25,11 @@ void setup() {
   DDRB = B00111000;  // Set pins on port B as outputs (for motor control signals)
 
   // ##### DEBUG ######
-  Serial.begin(9600);  // Initialize serial communication
-  Serial.print("Gear Ratio:");
-  Serial.println(gear_ratio);  // Print gear ratio
-  Serial.print("Steps per Revolution:");
-  Serial.println(steps_per_revolution);  // Print calculated steps_per_revolution per revolution
+  // Serial.begin(9600);  // Initialize serial communication
+  // Serial.print("Gear Ratio:");
+  // Serial.println(gear_ratio);  // Print gear ratio
+  // Serial.print("Steps per Revolution:");
+  // Serial.println(steps_per_revolution);  // Print calculated steps_per_revolution per revolution
   // Serial.end();                    // End serial communication
 }
 
@@ -46,12 +46,12 @@ void loop() {
   if (DO_RPM > 0) {
     T_step = pulse_period(DO_RPM);  // Calculate time delay for steps_per_revolution based on RPM
 
-    // ##### DEBUG ######
-    if (test != DO_RPM) {
-      Serial.println(DO_RPM);
-      Serial.println(T_step);
-      test = DO_RPM;
-    }
+    // // ##### DEBUG ######
+    // if (test != DO_RPM) {
+    //   Serial.println(DO_RPM);
+    //   Serial.println(T_step);
+    //   test = DO_RPM;
+    // }
 
     tmp |= B00001000;                     // Set step pin high to initiate a step
     PORTB = tmp;                          // Send step signal to motor driver
